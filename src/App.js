@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import FormTodo from './components/FormTodo';
 import './App.css';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends Component {
+  
+  render() {
+    return (
+      <>
+        <div className="App">
+          <FormTodo
+
+          />
+
+          <TodoList
+
+          />
+        </div>
+      </>
+    );
+  }
+
 }
 
 export default App;
