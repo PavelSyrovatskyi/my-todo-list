@@ -2,17 +2,22 @@ import React from 'react';
 
 const Todo = (props) => {
     return (
-        <li>Read the book</li>
+        <li>{props.todo.text}</li>
     )
 }
 
-const TodoList = () => {
+const TodoList = (props) => {
     return (
         <div>
-            <ul >
-                <Todo
-
-                />
+            <ul>
+                {props.todos.map(todo => (
+                    
+                    <Todo
+                        todo={todo}
+                        key={todo.id}
+                    />
+                ))}
+                
             </ul>
         </div>
     )
