@@ -1,37 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class FormTodo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: ''
-        }
-    }
+const FormTodo = ({
+    
+    handleChange,
+    handleSubmit,
+    addTodo
+}) => {
+    
+    const [text, setText] = useState('');
+    useEffect(() => {
+        setText(text)
+    }, [text])
 
     handleChange = e => {
-        this.setState({ text: e.target.value })
+       setText(e.target.value)
     }
 
     handleSubmit = () => {
-        this.props.addTodo(this.state.text);
-        this.setState({
-            text: ''
-        })
+        addTodo(text);
+        setText('')
     }
 
-    render() {
+    
         return (
             <div className="header">
                 <h2>My To Do List</h2>
 
                 <input
-                    value={this.state.text}
+                    value={text}
                     type="text"
                     placeholder="Add todo..."
-                    onChange={e => this.handleChange(e)}
+                    onChange={e => handleChange(e)}
                 />
                 <button
-                    onClick={this.handleSubmit}
+                    onClick={handleSubmit}
                     className="addBtn"
                 >
                     Add
@@ -40,6 +42,6 @@ class FormTodo extends Component {
         )
     }
 
-}
+
 
 export default FormTodo;

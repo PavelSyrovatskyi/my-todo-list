@@ -1,55 +1,83 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import FormTodo from './components/FormTodo';
 import './App.css';
 import TodoList from './components/TodoList';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: []
-    }
-  }
+const App = ({
+  deleteTodo,
+  handleEdit,
+  handleEditSave,
+  addTodo
+}) => {
   
+
+  const [todos, setTodos] = useState([]);
+
+  
+
   addTodo = todo => {
-    this.setState(prevState => ({
-      todos: [...prevState.todos, {
-        id: prevState.todos.length + 1,
-        text: todo,
-        isEdit: false
-      }],
-    }))
-    /* const addTodos =
-      this.state.todos.map((element) => {
+    const newTodos = [
+      ...todos, {
+        id: todos.length + 1, 
+        text:todo,
+        isEdit: false 
+      }];
+    setTodos(newTodos);
+  };
+
+
+  deleteTodo = id => {
+    const removeTodos = todos.filter((todo => todo.id !== id));
+    setTodos(removeTodos)
+  }
+
+  handleEdit = id => {
+    const editedTodos = todos.map((e) => {
+      if (e.id === id) {
+        return {
+          ...e,
+          isEdit: !e.isEdit
+        }
+      } return e;
+    })
+    setTodos(editedTodos)
+  }
+
+  handleEditSave = (id, todo) => {
+    
+    const savedTodos = todos.map((element) => {
+      if (element.id === id) {
         return {
           ...element,
-          id: element.todos.length + 1,
           text: todo,
-          isEdit: false
+          isEdit: !element.isEdit
         }
-      }) 
-    this.setState({
-      todos: addTodos
+      } return element;
     })
-    console.log('addTodo', addTodos) */
+    setTodos(savedTodos)
   }
 
-  render() {
-    return (
-      <>
-        <div className="App">
-          <FormTodo
-            addTodo={this.addTodo}
-          />
 
-          <TodoList
-            todos={this.state.todos}
-          />
-        </div>
-      </>
-    );
-  }
 
+
+
+  return (
+    <>
+      <div className="App">
+        <FormTodo
+          addTodo={addTodo}
+        />
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodo}
+          handleEdit={handleEdit}
+          handleEditSave={handleEditSave}
+        />
+      </div>
+    </>
+  );
 }
+
+
 
 export default App;

@@ -4,44 +4,34 @@
   max-width: 768px;
 }
 
-/* Include the padding and border in an element's total width and height */
 * {
   box-sizing: border-box;
 }
 
-/* Remove margins and padding from the list */
-ul {
-  margin: 0;
-  padding: 0;
+
+ .todo-list {
+  width: 100%;
+  background: #e8e8e8;
+  border-radius: 4px;
+  max-width: 768px;
+  padding: 2px;
 }
 
-/* Style the list items */
-ul li {
+.todo {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+  margin-bottom: 6px;
   cursor: pointer;
   position: relative;
-  padding: 12px 8px 12px 40px;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  list-style-type: none;
-  border-radius: 4px;
 }
-
-
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-ul li:hover {
-  background: #ddd;
-}
-
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
 
 
 .header {
@@ -51,14 +41,12 @@ ul li.checked {
   text-align: center;
 }
 
-/* Clear floats after the header */
 .header:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the input */
 input {
   margin: 0;
   border: none;
@@ -69,7 +57,32 @@ input {
   font-size: 16px;
 }
 
-/* Style the "Add" button */
+.saveBtn {
+  background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.delete-btn {
+  background-color: rgb(218, 12, 12);
+    border: none;
+    color: white;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .addBtn {
   padding: 10px;
   width: 25%;
